@@ -1,2 +1,2 @@
 # flask_basic
-flask框架的学习源码
+关于flask的基本代码、视图用于创建一个web项目
