@@ -7,9 +7,6 @@ app = Flask(__name__)
 # app.config.from_object(settings)
 bootstrap = Bootstrap5(app)
 
-
-
-
 @app.route('/')
 def hello_world():  # put application's code here
     return render_template("index.html")
