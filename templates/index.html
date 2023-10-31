@@ -27,6 +27,13 @@
             <li><a href="#">音乐人</a></li>
         </ul>
     </nav>
+    <div class="nav_div2">
+        <ul class="navbar2_ul">
+            <li><a href="#">推荐</a></li>
+            <li><a href="#">排行榜</a></li>
+            <li><a href="#">歌单</a></li>
+        </ul>
+    </div>
     <!-- <div class="nav_div2">
       <ul class="navbar2_ul">
         <li><a href="#">推荐</a></li>
@@ -35,24 +42,25 @@
       </ul>
     </div> -->
 </div>
-
-<div id="banner_list">
-    <ul id="img_list">
-        <li id="ban_li"><img src="{{ url_for('static',filename='imgs/top_1.jpg') }}" alt=""/></li>
-        <li id="ban_li"><img src="{{ url_for('static',filename='imgs/top_2.jpg') }}" alt=""/></li>
-        <li id="ban_li"><img src="{{ url_for('static',filename='imgs/top_3.jpg') }}" alt=""/></li>
-        <li id="ban_li"><img src="{{ url_for('static',filename='imgs/top_4.jpg') }}" alt=""/></li>
-        <li id="ban_li"><img src="{{ url_for('static',filename='imgs/top_1.jpg') }}" alt=""/></li>
-    </ul>
-    <!-- 原点占位 -->
-    <ul id="icolist">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-    <div class="prev"><</div>
-    <div class="next">></div>
+<div id="img_ad" style="background:url({{ url_for('static',filename='imgs/mao1.jpg') }}) ;">
+    <div id="banner_list">
+        <ul id="img_list">
+            <li id="ban_li"><img src="{{ url_for('static',filename='imgs/top_1.jpg') }}" alt=""/></li>
+            <li id="ban_li"><img src="{{ url_for('static',filename='imgs/top_2.jpg') }}" alt=""/></li>
+            <li id="ban_li"><img src="{{ url_for('static',filename='imgs/top_3.jpg') }}" alt=""/></li>
+            <li id="ban_li"><img src="{{ url_for('static',filename='imgs/top_4.jpg') }}" alt=""/></li>
+            <li id="ban_li"><img src="{{ url_for('static',filename='imgs/top_1.jpg') }}" alt=""/></li>
+        </ul>
+        <!-- 原点占位 -->
+        <ul id="icolist">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="prev"><</div>
+        <div class="next">></div>
+    </div>
 </div>
 <div class="fire" id="fire">
     <h2>热门推荐</h2>
@@ -64,59 +72,59 @@
         <li><a href="#">电子</a></li>
     </ul>
     <hr class="fire_hr"/>
-{% block concent %}
-    <div class="fire_list">
-        <div class="card" style="width: 14rem">
-            <img src="{{ url_for('static', filename='imgs/fire_01.png') }} " class="card-img-top" alt="..."/>
-            <div class="card-body">
-                <p class="card-text">测试文件</p>
+    {% block concent %}
+        <div class="fire_list">
+            <div class="card" style="width: 14rem">
+                <img src="{{ url_for('static', filename='imgs/fire_01.png') }} " class="card-img-top" alt="..."/>
+                <div class="card-body">
+                    <p class="card-text">测试文件</p>
+                </div>
+            </div>
+            <div class="card" style="width: 14rem">
+                <img src="{{ url_for('static', filename='imgs/fire_01.png') }}" class="card-img-top" alt="..."/>
+                <div class="card-body">
+                    <p class="card-text">测试文件</p>
+                </div>
+            </div>
+            <div class="card" style="width: 14rem">
+                <img src="{{ url_for('static', filename='imgs/fire_01.png') }}" class="card-img-top" alt="..."/>
+                <div class="card-body">
+                    <p class="card-text">测试文件</p>
+                </div>
+            </div>
+            <div class="card" style="width: 14rem">
+                <img src="{{ url_for('static', filename='imgs/fire_01.png') }} " class="card-img-top" alt="..."/>
+                <div class="card-body">
+                    <p class="card-text">测试文件</p>
+                </div>
+            </div>
+            <div class="card" style="width: 14rem">
+                <img src="{{ url_for('static', filename='imgs/fire_01.png') }}" class="card-img-top" alt="..."/>
+                <div class="card-body">
+                    <p class="card-text">测试文件</p>
+                </div>
+            </div>
+            <div class="card" style="width: 14rem">
+                <img src="{{ url_for('static', filename='imgs/fire_01.png') }}" class="card-img-top" alt="..."/>
+                <div class="card-body">
+                    <p class="card-text">测试文件</p>
+                </div>
+            </div>
+            <div class="card" style="width: 14rem">
+                <img src="{{ url_for('static', filename='imgs/fire_01.png') }} " class="card-img-top" alt="..."/>
+                <div class="card-body">
+                    <p class="card-text">测试文件</p>
+                </div>
+            </div>
+            <div class="card" style="width: 14rem">
+                <img src="{{ url_for('static', filename='imgs/fire_01.png') }}" class="card-img-top" alt="..."/>
+                <div class="card-body">
+                    <p class="card-text">测试文件</p>
+                </div>
             </div>
         </div>
-        <div class="card" style="width: 14rem">
-            <img src="{{ url_for('static', filename='imgs/fire_01.png') }}" class="card-img-top" alt="..."/>
-            <div class="card-body">
-                <p class="card-text">测试文件</p>
-            </div>
         </div>
-        <div class="card" style="width: 14rem">
-            <img src="{{ url_for('static', filename='imgs/fire_01.png') }}" class="card-img-top" alt="..."/>
-            <div class="card-body">
-                <p class="card-text">测试文件</p>
-            </div>
-        </div>
-        <div class="card" style="width: 14rem">
-            <img src="{{ url_for('static', filename='imgs/fire_01.png') }} " class="card-img-top" alt="..."/>
-            <div class="card-body">
-                <p class="card-text">测试文件</p>
-            </div>
-        </div>
-        <div class="card" style="width: 14rem">
-            <img src="{{ url_for('static', filename='imgs/fire_01.png') }}" class="card-img-top" alt="..."/>
-            <div class="card-body">
-                <p class="card-text">测试文件</p>
-            </div>
-        </div>
-        <div class="card" style="width: 14rem">
-            <img src="{{ url_for('static', filename='imgs/fire_01.png') }}" class="card-img-top" alt="..."/>
-            <div class="card-body">
-                <p class="card-text">测试文件</p>
-            </div>
-        </div>
-        <div class="card" style="width: 14rem">
-            <img src="{{ url_for('static', filename='imgs/fire_01.png') }} " class="card-img-top" alt="..."/>
-            <div class="card-body">
-                <p class="card-text">测试文件</p>
-            </div>
-        </div>
-        <div class="card" style="width: 14rem">
-            <img src="{{ url_for('static', filename='imgs/fire_01.png') }}" class="card-img-top" alt="..."/>
-            <div class="card-body">
-                <p class="card-text">测试文件</p>
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock %}
+    {% endblock %}
 
 <hr/>
 <div id="music_out"></div>

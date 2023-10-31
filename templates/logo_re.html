@@ -9,19 +9,19 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/font_ykiax20nte8/iconfont.css') }}" />
   </head>
   <body>
-    <form action="" method="post">
+    <form action="/login/egypt" method="post">
       <div class="login-box">
         <h1>Login</h1>
         <div class="input-box">
           <div class="input-text">
             <span class="iconfont icon-RectangleCopy"></span>
-            <input type="text" placeholder="用户名" />
+            <input type="text" placeholder="用户名" name="username" />
           </div>
           <div class="input-text">
             <span class="iconfont icon-RectangleCopy1"></span>
-            <input type="password" placeholder="密码" />
+            <input type="password" placeholder="密码" name="password"/>
           </div>
-          <div class="input-btn">登录</div>
+          <button type="submit" class="input-btn">登录</button>
           <div class="sign-up">
             还没账户？
             <a href="/register">立即注册</a>
