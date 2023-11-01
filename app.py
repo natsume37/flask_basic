@@ -13,11 +13,11 @@ bootstrap = Bootstrap4(app)
 
 @app.route('/')
 def index():  # put application's code here
-    fire_songs = songs(urls_dic["新歌榜"])
-    biaos = songs(urls_dic["飙升榜"])
-    yuans = songs(urls_dic["原创榜"])
+    fire_songs = songs(url=urls_dic["热歌榜"])
+    biaos = songs(url=urls_dic["飙升榜"])
+    yuans = songs(url=urls_dic["新歌榜"])
 
-    return render_template("index.html", **locals())
+    return render_template("index.html", fire_songs=fire_songs,biaos=biaos,yuans=yuans)
     # return "你好"
 
 

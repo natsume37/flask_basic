@@ -260,8 +260,7 @@
                         <ul class="list-group">
                             <li class="list-group-item bang_ceshi">新歌榜</li>
                             {% for fire in  fire_songs[:10] %}
-                                <li class="list-group-item"><a
-                                        href="http://music.163.com/song/media/outer/url?id={{ fire[0][0] }}.mp3">{{ fire[0][1] }}</a>
+                                <li class="list-group-item songs_ID" id="{{ fire[0] }}" name="{{ fire[0] }}">{{ fire[1] }}
                                 </li>
                             {% endfor %}
                         </ul>
@@ -272,8 +271,7 @@
                         <ul class="list-group">
                             <li class="list-group-item bang_ceshi">新歌榜</li>
                             {% for biao in  biaos[:10] %}
-                                <li class="list-group-item"><a
-                                        href="http://music.163.com/song/media/outer/url?id={{ biao[0][0] }}.mp3">{{ biao[0][1] }}</a>
+                                <li class="list-group-item songs_ID" id="{{ biao[0] }}" name="{{ biao[0] }}">{{ biao[1] }}
                                 </li>
                             {% endfor %}
                         </ul>
@@ -284,8 +282,8 @@
                         <ul class="list-group">
                             <li class="list-group-item bang_ceshi">原创榜</li>
                             {% for yuan in  yuans[:10] %}
-                                <li class="list-group-item"><a
-                                        href="http://music.163.com/song/media/outer/url?id={{ yuan[0][0] }}.mp3">{{ yuan[0][1] }}</a>
+                                <li class="list-group-item songs_ID" id="{{ yuan[0] }}"
+                                    name="{{ yuan[0] }}">{{ yuan[1] }}
                                 </li>
                             {% endfor %}
                         </ul>
@@ -296,15 +294,10 @@
     </div>
 {% endblock %}
 {% block music %}
-    <div id="music_out">
-        <iframe
-                frameborder="no"
-                marginwidth="0"
-                marginheight="0"
-                width="1000"
-                height="86"
-                src="https://music.163.com/outchain/player?type=2&id=541853&auto=1&height=66"
-        ></iframe>
+    <div id="music_out_c">
+        <span class="songs_name">OurMusic-极简</span>
+        {#        http://music.163.com/song/media/outer/url?id={i[0][0]}.mp3#}
+        <audio src="http://music.163.com/song/media/outer/url?id=31877628.mp3" controls preload="auto"></audio>
     </div>
 {% endblock %}
 <footer>
@@ -330,8 +323,8 @@
             </div>
         </box>
         <box class="itme">
-          <p id="timeDate"></p>
-          <p id="times"></p>
+            <p id="timeDate"></p>
+            <p id="times"></p>
         </box>
         <a href="#" class="badge badge-primary">about our</a>
         <a href="https://github.com/natsume37/flask_basic" class="badge badge-secondary">gitHub</a>
@@ -344,7 +337,7 @@
     let Head = document.querySelector("#nav");
     window.onscroll = () => {
         let top = document.documentElement.scrollTop || document.body.scrollTop;
-        console.log(top);
+        {#console.log(top);#}
         if (top != 0) {
             Head.style = "position:fixed;top:0;";
         } else {
@@ -430,6 +423,7 @@
     })
     {#时间特效#}
     let now = new Date();
+
     function createtime() {
         let grt = new Date("11/1/2023 00:00:00"); //修改建站时间
         now.setTime(now.getTime() + 250);
@@ -438,25 +432,26 @@
         hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
         hnum = Math.floor(hours);
         if (String(hnum).length == 1) {
-          hnum = "0" + hnum;
+            hnum = "0" + hnum;
         }
         minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
         mnum = Math.floor(minutes);
         if (String(mnum).length == 1) {
-          mnum = "0" + mnum;
+            mnum = "0" + mnum;
         }
         seconds =
-          (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+            (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
         snum = Math.round(seconds);
         if (String(snum).length == 1) {
-          snum = "0" + snum;
+            snum = "0" + snum;
         }
-    document.getElementById("timeDate").innerHTML =
-      "本站安全运行 " + dnum + " 天";
-    document.getElementById("times").innerHTML =
-      hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
-  }
-      setInterval("createtime()", 250);
+        document.getElementById("timeDate").innerHTML =
+            "本站安全运行 " + dnum + " 天";
+        document.getElementById("times").innerHTML =
+            hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+
+    setInterval("createtime()", 250);
 </script>
 <script>
     // tab栏切换
@@ -474,6 +469,20 @@
             }
             div_shows[index].style.display = "inline-block";
         });
+    }
+    {#音乐播放特效#}
+    let span_music_name = document.querySelector('#music_out_c span');
+    let auto_music = document.querySelector("#music_out_c audio");
+    let songs_lis = document.querySelectorAll('.songs_ID')
+    console.log(span_music_name,auto_music,songs_lis)
+    for (let song of songs_lis) {
+        song.addEventListener('click', function () {
+            {#alert("点击了")#}
+            let id = song.id
+            span_music_name.innerHTML = song.innerHTML;
+            auto_music.src = `http://music.163.com/song/media/outer/url?id=${id}.mp3`
+            auto_music.play()
+        })
     }
 </script>
 </body>

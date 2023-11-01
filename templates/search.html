@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {#  块标题  #}
+    <title>{% block mytitle %}
+        our_music
+    {% endblock %}</title>
+
+    {#块样式，使用bootstrap.load_css()加载bootstrap的css资源#}
+    {% block mystyle %}{{ bootstrap.load_css() }}{% endblock %}
+    {% block scripts %}{{ bootstrap.load_js() }}{% endblock %}
+    {# 自己的style#}
+    <link rel="stylesheet" href="{{ url_for('static', filename='./css/my_style.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='./css/search.css') }}"/>
+</head>
+<body>
+<div id="nav">
+    <nav>
+        <div class="logo">
+            <img src="{{ url_for('static',filename='imgs/Blog.jpg') }}" alt="Logo"/>
+        </div>
+        <h2 id="logo">OurMusic</h2>
+        <ul class="nav_ul">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">我的音乐</a></li>
+            <li><a href="#">我的关注</a></li>
+            <li><a href="#">音乐人</a></li>
+        </ul>
+    </nav>
+    <div class="nav_div2">
+        <ul class="navbar2_ul">
+            <li><a href="#">推荐</a></li>
+            <li><a href="#">排行榜</a></li>
+            <li><a href="#">歌单</a></li>
+        </ul>
+    </div>
+</div>
+{% block search %}
+    <div id="box_01">
+    <input id="search_02" type="text">
+    <button id="btn_02"><a href="">搜索</a></button>
+    <div class="search_my">
+        <ul class="list-group">
+            <li class="list-group-item zu_333">单曲</li>
+            {% for song in songs %}
+               <li class="list-group-item zu_333"><a href="{{ song['song_id'] }}">{{ song['name'] }} {{ song['singer_list'][0] }} {{ song['form'] }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    </div>
+{% endblock %}
+<script>
+    let inp = document.querySelector("#search_02")
+    let a = document.querySelector("#btn_02 a")
+    inp.addEventListener('change',function (){
+        let song_name = inp.value
+        a.href = 'http://127.0.0.1:5000/search/'+ song_name
+        console.log(a.href)
+    })
+</script>
+</body>
+</html>
