@@ -4,7 +4,8 @@
 # @TIME: 2023/9/21 21:38
 
 import requests
+input_user = "十年"
+url = f"https://music.163.com/api/search/get?s={input_user}&type=1&limit=3"
 
-url = 'http://127.0.0.1:5000/get_data'
-res = requests.post(url).text
-print(res)
+res = requests.get(url)
+print(res.json())

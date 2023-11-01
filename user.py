@@ -10,6 +10,9 @@ class User:
         self.user = user
         self.password = password
 
-    @staticmethod
-    def save_list(user, password):
-        return UserList.add_user(user, password)
+    @classmethod
+    def save_list(cls, user, password):
+        try:
+            return add_user(user, password)
+        except Exception as e:
+            return False, e

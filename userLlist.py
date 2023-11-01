@@ -6,30 +6,28 @@
 user_list = {"natsume": "123"}
 
 
-class UserList:
+def is_user(user):
+    if user in user_list.keys():
+        return True
+    return False
 
-    @classmethod
-    def is_user(cls, user):
-        if user in user_list.keys():
-            return True
-        return False
 
-    @classmethod
-    def add_user(cls, user, password):
-        bool = cls.is_user(user)
-        if bool:
-            user_list[user] = password
-            return True, "用户添加成功"
+def add_user(user, password):
+    bool = is_user(user)
+    if bool:
+        return False, "该用户已注册"
+    else:
+        user_list[user] = password
+        print(user_list, "当前用户列表", user, password)
+        return True, "用户添加成功"
+
+
+def is_yz(user, password):
+    bool = is_user(user)
+    if bool:
+        if password == user_list[user]:
+            return True, "登录成功"
         else:
-            return False, "该用户已注册"
-
-    @classmethod
-    def is_yz(cls, user, password):
-        bool = cls.is_user(user)
-        if bool:
-            if password == user_list[user]:
-                return True, "登录成功"
-            else:
-                return False, "用户名或密码错误"
-        else:
-            return False, "用户名错误"
+            return False, "用户名或密码错误"
+    else:
+        return False, "用户名错误"
