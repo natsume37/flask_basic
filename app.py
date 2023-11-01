@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for,jsonify
 from flask_bootstrap import Bootstrap4
 from user import *
 from userLlist import *
 from settings import logger
 from songs import *
 from func_list import *
+
 app = Flask(__name__)
 # app.config.from_object(settings)
 bootstrap = Bootstrap4(app)
@@ -31,8 +32,7 @@ def login_egypt():
         name = request.form.get("username")
         password = request.form.get("password")
         res = is_yz(name, password)
-        print(name, password)
-        print(res, user_list)
+
         if res[0]:
             return redirect(url_for('index'))
         else:
@@ -59,9 +59,15 @@ def user_add():
             return redirect(url_for('register'))
 
 
+@app.route("/search/<music_name>")
+def search_music(music_name):
+    songs = clean_json(music_name)
+    return render_template('search.html', **locals())
+
 # @app.route("/search/<music_name>")
 # def search_music(music_name):
-
+#     songs = clean_json(music_name)
+#     return render_template('search.html', **locals())
 
 
 if __name__ == '__main__':
