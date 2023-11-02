@@ -46,7 +46,7 @@ LOGGING_DIC = {
         'file_info_handler': {
             'level': 'INFO',
             'class': 'logging.handlers.RotatingFileHandler',  # 保存到文件,日志轮转
-            'filename': 'user.log',
+            'filename': 'log/user.log',
             'maxBytes': 1024 * 1024 * 10,  # 日志大小 10M
             'backupCount': 10,  # 日志文件保存数量限制
             'encoding': 'utf-8',
@@ -55,7 +55,7 @@ LOGGING_DIC = {
         'file_debug_handler': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',  # 保存到文件
-            'filename': 'test.log',  # 日志存放的路径
+            'filename': 'log/test.log',  # 日志存放的路径
             'encoding': 'utf-8',  # 日志文件的编码
             'formatter': 'test',
         },

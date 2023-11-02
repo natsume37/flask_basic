@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify,flash
+from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
 from flask_bootstrap import Bootstrap4
 from user import *
 from userLlist import *
@@ -75,7 +75,7 @@ def search_music(music_name):
 
 @app.route("/fire")
 def fire():
-    fire_songs = songs(url=urls_dic["热歌榜"],)
+    fire_songs = songs(url=urls_dic["热歌榜"], )
     biaos = songs(url=urls_dic["飙升榜"])
     yuans = songs(url=urls_dic["新歌榜"])
 
