@@ -7,7 +7,7 @@ import re
 
 
 def search_of_name(name):
-    url = f"https://music.163.com/api/search/get?s={name}&type=1&limit=2"
+    url = f"https://music.163.com/api/search/get?s={name}&type=1&limit=10"
     res = requests.get(url)
     return res.json()
 

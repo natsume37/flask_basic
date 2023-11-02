@@ -44,10 +44,18 @@
         <ul class="list-group">
             <li class="list-group-item zu_333">单曲</li>
             {% for song in songs %}
-               <li class="list-group-item zu_333"><a href="{{ song['song_id'] }}">{{ song['name'] }} {{ song['singer_list'][0] }} {{ song['form'] }}</a></li>
+               <li class="list-group-item songs_ID" id="{{ song["song_id"] }}" name="{{ song['song_id'] }}">{{ song['name'] }} {{ song['singer_list'] }} {{ song['form'] }}</li>
             {% endfor %}
         </ul>
     </div>
+    </div>
+
+{% endblock %}
+{% block music %}
+    <div id="music_out_c">
+        <span class="songs_name">OurMusic-极简</span>
+        {#        http://music.163.com/song/media/outer/url?id={i[0][0]}.mp3#}
+        <audio src="http://music.163.com/song/media/outer/url?id=31877628.mp3" controls preload="auto"></audio>
     </div>
 {% endblock %}
 <script>
@@ -56,8 +64,20 @@
     inp.addEventListener('change',function (){
         let song_name = inp.value
         a.href = 'http://127.0.0.1:5000/search/'+ song_name
-        console.log(a.href)
     })
+    {#音乐播放特效#}
+    let span_music_name = document.querySelector('#music_out_c span');
+    let auto_music = document.querySelector("#music_out_c audio");
+    let songs_lis = document.querySelectorAll('.songs_ID')
+    console.log(span_music_name,auto_music,songs_lis)
+    for (let song of songs_lis) {
+        song.addEventListener('click', function () {
+            let id = song.id
+            span_music_name.innerHTML = song.innerHTML;
+            auto_music.src = `http://music.163.com/song/media/outer/url?id=${id}.mp3`
+            auto_music.play()
+        })
+    }
 </script>
 </body>
 </html>
