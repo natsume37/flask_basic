@@ -4,6 +4,9 @@
   text-decoration: none;
   list-style: none;
 }
+body{
+  background-color:#d3ccd6;
+}
 /* 导航栏 */
 #nav{
     width: 100%;

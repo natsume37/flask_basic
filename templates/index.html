@@ -11,16 +11,16 @@
     {% block mystyle %}{{ bootstrap.load_css() }}{% endblock %}
     {% block scripts %}{{ bootstrap.load_js() }}{% endblock %}
     {# 自己的style#}
-    <script src="{{ url_for('static',filename='js/my_js.js') }}"></script>
+{#    <script src="{{ url_for('static',filename='js/my_js.js') }}"></script>#}
     <link rel="stylesheet" href="{{ url_for('static', filename='./css/my_style.css') }}"/>
 </head>
-<body>
+
 <div id="nav">
     <nav>
         <div class="logo">
             <img src="{{ url_for('static',filename='imgs/logo.png') }}" alt="Logo"/>
         </div>
-        <h2 id="logo">OurMusic</h2>
+        <h2 id="logo"><a href="http://127.0.0.1:5000">OurMusic</a></h2>
         <ul class="nav_ul">
             <li><a href="http://localhost:5000">首页</a></li>
             <li><a href="#">我的音乐</a></li>
@@ -29,14 +29,17 @@
         </ul>
         <input id="search_my" type="texte">
         <button id="btn_my" type="button"><a href="">搜索</a></button>
+        <span><a href="{{ url_for('login') }}">登录</a></span>
+        <span><a href="{{ url_for("register") }}">注册</a></span>
     </nav>
-    <div class="nav_div2">
-        <ul class="navbar2_ul">
+    <div class= 'nav_div2' >
+        <ul class='navbar2_ul'>
             <li><a href="#">推荐</a></li>
             <li><a href="#">排行榜</a></li>
             <li><a href="#">歌单</a></li>
         </ul>
     </div>
+
 </div>
 <div id="img_ad" style="background:url({{ url_for('static',filename='imgs/mao1.jpg') }}) ;">
     <div id="banner_list">
@@ -60,7 +63,7 @@
 </div>
 {% block concent %}
     <div class="fire" id="fire">
-        <h2>热门推荐</h2>
+        <h2><a href="{{ url_for('fire') }}">热门推荐</a></h2>
         <ul class="fire_ul">
             <li><a href="#" class="red_show_fire">华语</a></li>
             <li><a href="#">流行</a></li>
@@ -260,7 +263,8 @@
                         <ul class="list-group">
                             <li class="list-group-item bang_ceshi">新歌榜</li>
                             {% for fire in  fire_songs[:10] %}
-                                <li class="list-group-item songs_ID" id="{{ fire[0] }}" name="{{ fire[0] }}">{{ fire[1] }}
+                                <li class="list-group-item songs_ID" id="{{ fire[0] }}"
+                                    name="{{ fire[0] }}">{{ fire[1] }}
                                 </li>
                             {% endfor %}
                         </ul>
@@ -271,7 +275,8 @@
                         <ul class="list-group">
                             <li class="list-group-item bang_ceshi">新歌榜</li>
                             {% for biao in  biaos[:10] %}
-                                <li class="list-group-item songs_ID" id="{{ biao[0] }}" name="{{ biao[0] }}">{{ biao[1] }}
+                                <li class="list-group-item songs_ID" id="{{ biao[0] }}"
+                                    name="{{ biao[0] }}">{{ biao[1] }}
                                 </li>
                             {% endfor %}
                         </ul>
@@ -454,6 +459,30 @@
     setInterval("createtime()", 250);
 </script>
 <script>
+    {#返回顶部按钮#}
+    window.onscroll = function () {
+        scrollFunction();
+    };
+
+    function scrollFunction() {
+        if (
+            document.body.scrollTop > 10 ||
+            document.documentElement.scrollTop > 10
+        ) {
+            // 显示返回顶部按钮
+            document.getElementById("backToTopBtn").style.display = "block";
+        } else {
+            // 隐藏返回顶部按钮
+            document.getElementById("backToTopBtn").style.display = "none";
+        }
+    }
+
+    // 平滑滚动到页面顶部
+    function scrollToTop() {
+        document.body.scrollTop = 0; // Safari
+        document.documentElement.scrollTop = 0; // Chrome, Firefox, IE and Opera
+    }
+
     // tab栏切换
     let li_shows = document.querySelectorAll(".fire_ul li a");
     let div_shows = document.querySelectorAll(".fire_list");
@@ -474,7 +503,7 @@
     let span_music_name = document.querySelector('#music_out_c span');
     let auto_music = document.querySelector("#music_out_c audio");
     let songs_lis = document.querySelectorAll('.songs_ID')
-    console.log(span_music_name,auto_music,songs_lis)
+    {#console.log(span_music_name,auto_music,songs_lis)#}
     for (let song of songs_lis) {
         song.addEventListener('click', function () {
             {#alert("点击了")#}

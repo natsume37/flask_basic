@@ -1,33 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>OurMusic-Register</title>
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/logo_re.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/font_ykiax20nte8/iconfont.css') }}" />
-  </head>
-  <body>
-    <form action="/register/egypt" method="post">
-      <div class="login-box">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/logo_re.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/font_ykiax20nte8/iconfont.css') }}"/>
+    {#块样式，使用bootstrap.load_css()加载bootstrap的css资源#}
+    {% block mystyle %}{{ bootstrap.load_css() }}{% endblock %}
+    {% block scripts %}{{ bootstrap.load_js() }}{% endblock %}
+    <style>
+        #top_massge {
+            position: fixed;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" id="top_massge" role="alert">
+        <strong>THINGS</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endfor %}
+<form action="/register/egypt" method="post">
+    <div class="login-box">
         <h1>register</h1>
         <div class="input-box">
-          <div class="input-text">
-            <span class="iconfont icon-RectangleCopy"></span>
-            <input type="text" placeholder="邮箱" />
-          </div>
-          <div class="input-text">
-            <span class="iconfont icon-RectangleCopy1"></span>
-            <input type="password" placeholder="密码" />
-          </div>
-          <button type="submit" class="input-btn">注册</button>
-          <div class="sign-up">
-            已经有账号？
-            <a href="/login">登录</a>
-          </div>
+            <div class="input-text">
+                <span class="iconfont icon-RectangleCopy"></span>
+                <input type="text" placeholder="邮箱"/>
+            </div>
+            <div class="input-text">
+                <span class="iconfont icon-RectangleCopy1"></span>
+                <input type="password" placeholder="密码"/>
+            </div>
+            <button type="submit" class="input-btn">注册</button>
+            <div class="sign-up">
+                已经有账号？
+                <a href="/login">登录</a>
+            </div>
         </div>
-      </div>
-    </form>
-  </body>
+    </div>
+</form>
+</body>
 </html>
