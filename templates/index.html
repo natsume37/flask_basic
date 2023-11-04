@@ -11,7 +11,7 @@
     {% block mystyle %}{{ bootstrap.load_css() }}{% endblock %}
     {% block scripts %}{{ bootstrap.load_js() }}{% endblock %}
     {# 自己的style#}
-{#    <script src="{{ url_for('static',filename='js/my_js.js') }}"></script>#}
+    {#    <script src="{{ url_for('static',filename='js/my_js.js') }}"></script>#}
     <link rel="stylesheet" href="{{ url_for('static', filename='./css/my_style.css') }}"/>
 </head>
 
@@ -32,7 +32,7 @@
         <span><a href="{{ url_for('login') }}">登录</a></span>
         <span><a href="{{ url_for("register") }}">注册</a></span>
     </nav>
-    <div class= 'nav_div2' >
+    <div class='nav_div2'>
         <ul class='navbar2_ul'>
             <li><a href="#">推荐</a></li>
             <li><a href="#">排行榜</a></li>
@@ -512,7 +512,17 @@
             auto_music.src = `http://music.163.com/song/media/outer/url?id=${id}.mp3`
             auto_music.play()
         })
-    }
+        for (let i of songs_lis) {
+        i.addEventListener('mouseover', function () {
+            console.log("鼠标悬浮了");
+            i.style.backgroundColor = 'pink'
+        })
+        i.addEventListener('mouseout', function () {
+            console.log("鼠标移除le");
+            i.style.backgroundColor = 'white'
+        })
+    }}
+
 </script>
 </body>
 </html>
