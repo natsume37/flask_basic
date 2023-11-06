@@ -68,10 +68,6 @@ def search_music(music_name):
     return render_template('search.html', **locals())
 
 
-# @app.route("/search/<music_name>")
-# def search_music(music_name):
-#     songs = clean_json(music_name)
-#     return render_template('search.html', **locals())
 
 @app.route("/fire")
 def fire():
