@@ -1,5 +1,5 @@
 # flask_basic
-关于flask的基本代码、视图用于创建一个web项目
+关于flask的基本代码、协同同寝室人员共同创作 视图用于创建一个web项目
 使用前请注意库
 ```python
 pip install -r requirements.txt
